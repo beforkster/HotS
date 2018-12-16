@@ -1,10 +1,10 @@
 map_name,waveclear,dmg_sustain,dmg_burst,tank,cc,support_sustain,support_save
-Battlefield of Eternity,100,500,6,350,7,105,3
-Braxis Holdout,115,400,8,350,9,105,4
-Cursed Hollow,150,400,6,300,7,100,6
-Dragon Shire,130,450,7,350,9,100,3
-Infernal Shrines,150,400,6,300,7,100,5
-Sky Temple,150,400,6,350,7,100,5
-Tomb of the Spider Queen,130,105,7,300,8,100,6
-Towers of Doom,150,105,8,300,9,100,6
-Volskaya Foundry,130,130,8,350,9,105,6
+Battlefield of Eternity,100,500,450,350,525,105,225
+Braxis Holdout,115,400,600,350,675,105,300
+Cursed Hollow,150,400,450,300,525,100,450
+Dragon Shire,130,450,525,350,675,100,225
+Infernal Shrines,150,400,450,300,525,100,375
+Sky Temple,150,400,450,350,525,100,375
+Tomb of the Spider Queen,130,105,525,300,600,100,450
+Towers of Doom,150,105,600,300,675,100,450
+Volskaya Foundry,130,130,600,350,675,105,450

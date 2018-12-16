@@ -1,6 +1,6 @@
 import sqlite3
 
-hots_db = r'C:\Users\baxter\reader\apps\Hots\hots_data.db'
+hots_db = r'C:\Users\baxter\reader\apps\Hots\hots.db'
 conn = sqlite3.connect(hots_db)
 c = conn.cursor()
 m = ['waveclear', 'dmg_sustain', 'tank', 'cc']

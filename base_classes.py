@@ -1,13 +1,14 @@
 """ Sets up Base Classes for objects """
 from data_pull import data_gather_dim
 dimension_list = ['waveclear', 'dmg_sustain', 'dmg_burst', 'tank', 'cc', 'support_sustain', 'support_save']
-hots_db = r'C:\Users\baxter\reader\apps\Hots\hots_data.db'
+hots_db = r'C:\Users\baxter\reader\apps\Hots\hots.db'
 
 class Item():
     """ All attributes of a map/hero/team necessary for a team to win """
 
     def __init__(self, item_name, item_type, dimensions=dimension_list, database=hots_db):
         self.name = item_name
+        self.rating = 0
         if item_type == 'hero':
             field_table = 'hero_data'
             field_name = 'hero_name'
@@ -20,25 +21,23 @@ class Item():
         data = data[0]
         for num, dimension in enumerate(dimension_list):
             setattr(self, dimension, data[num])
-        # self.waveclear = int(data[0])
-        # self.dmg_sustain = int(data[1])
-        # self.dmg_burst = int(data[2])
-        # self.tank = int(data[3])
-        # self.cc = int(data[4])
-        # self.support_sustain = int(data[5])
-        # self.support_save = int(data[6])
 
     def __repr__(self):
         return '{} - {}'.format(self.__class__.__name__, self.name)
 
-    def rank(self, overall_rank):
-        self.rank = overall_rank
+    def clr_rating(self):
+        self.rating = 0
 
 class Team(Item):
     """ Contains Heroes as members and a team rating based on the individual rating methods of Item """
 
-    def __init__(self, member_list=[], dimensions=dimension_list):
-        self.members = member_list
+    def __init__(self, teamname, member_list=None, dimensions=dimension_list):
+        self.name = teamname
+        if member_list is None:
+            self.members = []
+        else:
+            self.members = member_list
+        self.bans = []
         for dimension in dimension_list:
             setattr(self, dimension, 0)
 
@@ -50,33 +49,26 @@ class Team(Item):
     def __len__(self):
         return len(self.members)
 
-    def add_hero(self, hero_name, dimensions=dimension_list):
-        self.members.append(hero_name)
+    def add_hero(self, hero1, dimensions=dimension_list):
+        print(self.name)
+        self.members.append(hero1)
         for dimension in dimension_list:
-            setattr(self, dimension, getattr(hero_name, dimension))
-        # self.waveclear += hero_name.waveclear
-        # self.dmg_sustain += hero_name.dmg_sustain
-        # self.dmg_burst += hero_name.dmg_burst
-        # self.tank += hero_name.tank
-        # self.cc += hero_name.cc
-        # self.support_save += hero_name.support_save
-        # self.support_sustain += hero_name.support_sustain
+            setattr(self, dimension, getattr(hero1, dimension))
 
     def remove_hero(self, hero_name):
         try:
-            self.members.remove(hero_name)
-            self.waveclear -= hero_name.waveclear
-            self.dmg -= hero_name.dmg
-            self.tank -= hero_name.tank
-            self.support -= hero_name.support
+            self.members.remove(self.member(hero_name))
         except ValueError:
             print('Hero not on Team')
 
     def __repr__(self):
-        return "Team: " + "{}".format(self.members)
+        return 'Team: {}'.format(member for member in self.members)
 
-    def rating(self, overall_rating):
-        self.rating = overall_rating
+    def max_members(self):
+        return sorted([member for member in self.members], key = lambda x: x.rating, reverse=True)[:3]
+
+    def new_ban(self, hero2):
+        self.bans.append(hero2)
 
 
 class Game():

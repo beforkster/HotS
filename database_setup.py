@@ -1,6 +1,6 @@
 import csv, sqlite3
 
-hots_db = r'C:\Users\baxter\reader\apps\Hots\hots_data.db'
+hots_db = r'C:\Users\baxter\reader\apps\Hots\hots.db'
 hero_file = r'C:\Users\baxter\reader\apps\Hots\hero_data.csv'
 map_file = r'C:\Users\baxter\reader\apps\Hots\hots_data.csv'
 file_list = [map_file, hero_file]
