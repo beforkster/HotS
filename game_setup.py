@@ -63,6 +63,7 @@ if __name__ == '__main__':
         pick_ban(gam, team_turns[turn][0], pick, team_turns[turn][1])
         if turn == 11:
             print('Picking over\nHome Team: {}\nvs\nEnemy Team: {}'.format([hero for hero in gam.home_team.members], [hero for hero in gam.enemy_team.members]))
+            input('Done')
             break
         print('\nHome Bans: {}  -  Enemy Bans: {}\n'.format([hero for hero in gam.home_team.bans], [hero for hero in gam.enemy_team.bans]))
         print('\nHome Team: {} vs. Enemy Team: {}\n-------------------------\nMoving to next round!\n___________________\n'.format([hero for hero in gam.home_team.members], [hero for hero in gam.enemy_team.members]))
