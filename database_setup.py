@@ -1,8 +1,7 @@
 import csv, sqlite3
-
-hots_db = r'C:\Users\baxter\reader\apps\Hots\hots.db'
-hero_file = r'C:\Users\baxter\reader\apps\Hots\hero_data.csv'
-map_file = r'C:\Users\baxter\reader\apps\Hots\hots_data.csv'
+from base_classes import path_name, hots_db
+hero_file = os.path.join(path_name, 'hero_data.csv')
+map_file = os.path.join(path_name, 'hots_data.csv')
 file_list = [map_file, hero_file]
 file_dict = {map_file: 'map_name', hero_file: 'hero_name'}
 table_name_dict = {map_file: 'map_data', hero_file: 'hero_data'}

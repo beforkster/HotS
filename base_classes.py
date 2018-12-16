@@ -1,7 +1,11 @@
 """ Sets up Base Classes for objects """
 from data_pull import data_gather_dim
+import os
+import sys
 dimension_list = ['waveclear', 'dmg_sustain', 'dmg_burst', 'tank', 'cc', 'support_sustain', 'support_save']
-hots_db = r'C:\Users\baxter\reader\apps\Hots\hots.db'
+file = sys.argv[0]
+path_name = os.path.dirname(file)
+hots_db = os.path.join(path_name, 'hots.db')
 
 class Item():
     """ All attributes of a map/hero/team necessary for a team to win """
