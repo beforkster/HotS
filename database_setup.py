@@ -1,5 +1,5 @@
-import csv, sqlite3
-from base_classes import path_name, hots_db
+import csv, sqlite3, sys, os
+from data_pull import path_name, hots_db
 hero_file = os.path.join(path_name, 'hero_data.csv')
 map_file = os.path.join(path_name, 'hots_data.csv')
 file_list = [map_file, hero_file]

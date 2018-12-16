@@ -1,5 +1,8 @@
 import sqlite3
-from base_classes import hots_db
+import sys, os
+file = sys.argv[0]
+path_name = os.path.dirname(file)
+hots_db = os.path.join(path_name, 'hots.db')
 conn = sqlite3.connect(hots_db)
 c = conn.cursor()
 m = ['waveclear', 'dmg_sustain', 'tank', 'cc']

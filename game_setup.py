@@ -1,6 +1,6 @@
 import sqlite3
-from base_classes import Item, Team, Game, hots_db, dimension_list
-from data_pull import Hero_List
+from base_classes import Item, Team, Game, dimension_list
+from data_pull import Hero_List, hots_db
 
 def game_start():
     herolist = Hero_List(hots_db)
