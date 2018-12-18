@@ -1,4 +1,7 @@
-import csv, sqlite3, sys, os
+""" Creates and populates sqlite database with hots hero and map data """
+
+
+import csv, sqlite3, sys, oS
 from data_pull import path_name, hots_db
 hero_file = os.path.join(path_name, 'hero_data.csv')
 map_file = os.path.join(path_name, 'hots_data.csv')

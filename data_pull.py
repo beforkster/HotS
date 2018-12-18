@@ -1,3 +1,6 @@
+""" Data extraction functions """
+
+
 import sqlite3
 import sys, os
 file = sys.argv[0]
@@ -11,7 +14,7 @@ t = 'hero_data'
 im = 'hero_name'
 
 def data_gather_dim(cxn, metric_list, itemname_list, table_name, itemtype_field):
-    """ Retrieves sqldata for hero/map """
+    """ Retrieves sqldata for a specific hero/map """
     query = 'SELECT {} FROM {} WHERE {} IN ({})'.format(', '.join(metric for metric in metric_list), table_name, itemtype_field, ', '.join('?' * len(itemname_list)))
     with sqlite3.connect(cxn):
         c = sqlite3.connect(cxn).cursor()

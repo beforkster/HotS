@@ -1,8 +1,19 @@
+"""
+    Pulls in hero data to the pool team of the current Game() class
+    Assigns ratings to each hero based on the map and the hero metrics
+    Cycles through user inputs representing turns with an output of the top three heroes at each turn
+"""
+
+
 import sqlite3
 from base_classes import Item, Team, Game, dimension_list
 from data_pull import Hero_List, hots_db
 
 def game_start():
+    """
+    Pulls in hero data to the pool team of the current Game() class,
+    and returns the Game() class that will be the basis of the draft
+    """
     herolist = Hero_List(hots_db)
     heroclasses = []
     for item in herolist:
@@ -11,10 +22,12 @@ def game_start():
     return curgame
 
 def clear_rating(game_obj):
+    """ Clears the rating for each hero in order to re-rate at each new turn """
     for member in game_obj.pool.members:
         member.clr_rating()
 
 def rank_members(game_obj, team_name):
+    """ Ranks heroes according to metrics and returns the top 3 heroes """
     clear_rating(game_obj)
     team = getattr(game_obj, team_name)
     pool = game_obj.pool
@@ -28,6 +41,7 @@ def rank_members(game_obj, team_name):
     return game_obj.pool.max_members()
 
 def pick_ban(game_obj, team_name, heroes, pick_type):
+    """ Adds/Removes heroes from the respective teams determined by the pick round """
     team = getattr(game_obj, team_name)
     if pick_type == '1 pick':
         team.add_hero(game_obj.pool.member(heroes[0]))
